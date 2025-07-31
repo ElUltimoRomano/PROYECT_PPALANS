@@ -1,375 +1,238 @@
-/* Reset CSS básico */
-* {
-  margin: 0;
-  padding: 0;
 
-}
+@import url('Nav_Bar.css');
+@import url('Footer.css');
+@import url('Foda.css');
 :root {
   --Color_Cafe_Claro: #9a827b;
   --Color_Cafe: #91766e;
   --Color_Cafe_Oscuro: #523f39;
-  --Texto_Base:'Monserrat';
-  --Titulos: 'Cormorant Garamond';
-  --Subtitulos: 'Bebas Neue';
+  --Texto_Base: 'Montserrat', sans-serif;
+  --Titulos: 'Cormorant Garamond', serif;
+  --Subtitulos: 'Bebas Neue', sans-serif;
 }
-
-html, body {
-  height: 100%;
-  font-family: sans-serif;
+*{
+  overflow-x:hidden;
+}
+button,a{
+  all:unset;
+}
+body {
+  margin: 0;
+  font-family: var(--Texto_Base);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  
+}
+ul {
+  list-style: circle;
+  padding: 0;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+ul li {
+  margin: 0.5rem 0;
+  text-align: left;
 }
 
-input, button, textarea, select {
-  font: inherit;
+.copi {
+  margin-top: 2rem;
 }
-button{
-   all: unset;
+#subtitulo {
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
 }
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.wrapper{
- size: 100%;
-}
-
-.contenido {
-  flex: 1;
-}
-/* -----------------BARRA DE NAVEGACION------------------------------------- */
-
-.navegacion{
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
+.wrapper {
   width: 100%;
-  background-color: white;
-  opacity: 0;
-  z-index: 1000;
-}
-
-.opciones{
-    align-items: center;
-    margin-left: auto;
-    list-style: none;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.logo{
-    font-family: var(--Titulos);
-    font-size: 2rem;
-}
-
-.nav_bar{
-    margin: .5rem;
-    padding: .5rem;
-    padding-inline: .5rem;
-    font-size: 1.5rem;
-    text-decoration: underline;
-    border-radius: .5rem;
-    z-index: 100;
-}
-.nav_bar:hover{
-    background-color: black;
-    color: white;
-    transition: .7s;
-    cursor:pointer;
-    
-}
-/* ---------------CUERPO------------------------------------------ */
-.cuerpo{
-    background-image: url(IMG/Fondo.avif);
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-}
-#logo_eslogan{
-  justify-items: center;
-}
-.titulo{
-    height: 100vh;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 20rem;
-    color: white;  
-}
-
-#grande{
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-sizing: content-box;  
-    line-height: .7; 
-    font-size: 20vh;
 }
 
 
-#subtitulo{
+/* ----------------- ENCABEZADO ------------------- */
+
+.encabezado {
+  width: 100%;
+  background-image: url(IMG/Fondo.avif);
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+/* ------------------ LOGO + ESLOGAN ------------------ */
+
+#logo_eslogan {
   text-align: center;
-  font-size: 3vh;
-  word-spacing: 1rem;
-  font-family: 'Bebas Neue';
+  padding: 34vh 1rem 2rem;
+  z-index: 10000;
+  overflow: hidden;
 }
 
-
-.btn_compra{
-  font-weight: bold;
+.logo_titulo {
+  line-height: 15vh;
   font-family: var(--Titulos);
-  font-size: 2rem;
-  margin: 1rem;
-  padding: 2rem;
-  height: 20%;
+  font-size: 15vh;
+  margin: 0;
+  color: white;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.linea_invicible{
+  height: 2.5vh;
+  overflow: hidden;
+}
+
+.logo_eslogan_texto {
+  font-family: var(--Subtitulos);
+  font-size: 3vh;
+  line-height: 3vh;
+  margin: 0;
+  word-spacing: 1vw;
+  color: white;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.conteiner_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0rem 50rem;
+
+}
+
+.btn_compra {
+  font-family: var(--Titulos);
+  font-size: 2vw;
+  font-weight: bold;
+  padding: 2vh;
   background-color: black;
   color: white;
-  transition: 1s;
-  margin: 1cm;
-  border: white;
-  border-color: white;
-  border-style: solid;
-}
-.btn_compra:hover{
-  color: black;
+  border: 2px solid white;
   transition: 0.5s;
-  cursor: pointer;
+  border-radius: 1rem;
+  opacity: 0;
+}
+
+
+.btn_compra:hover {
   background-color: white;
-  padding: 1.5rem;
-  font-size: 2.2rem;
-  
+  color: black;
+  padding: 2.2vh;
+  font-size: 2.5vw;
+  cursor: pointer;
 }
-.conteiner_btn{
-  height: 20rem;
-  width: 100%;
-  justify-content: center;
+
+/* ------------------ APARTADOS ------------------ */
+
+.apartados {
   display: flex;
-  align-items: center;
-  
-}
-.apartados{
-  overflow: hidden;
-  position: relative;
   width: 100vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--Subtitulos);
-  transition: background-size 1s ease;;
+  transition: background-size 1s ease;
+  overflow:hidden;
 }
-.apartado{
-  position: relative;
-  background-size:cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
+.apartado {
+  width: 50vw;
+  height: 100vh;
+  font-family: var(--Subtitulos);
+  font-size: 10rem;
   font-weight: bold;
   color: white;
-  font-size: 10rem;
   display: flex;
   justify-content: center;
-  height: 100vh;
-  width: 50vw;
-  text-align: center;
   align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   transition: background-size 1s ease-in-out;
-  
 }
 
 #dama {
   background-image: url(IMG/Dama.jpg);
-  
 }
+
 #caballero {
   background-image: url(IMG/Caballero.jpg);
-  
 }
-#dama::after {
-  content: "DAMA";
-}
-#caballero::after {
-  content: "CABALLERO";
-}
-.apartado::after{
+
+.apartado::after {
+  content: attr(id);
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background-color .5s ease-in-out;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.5s ease-in-out;
+  font-size: inherit;
+  font-weight: bold;
 }
-.char {
-  display: inline-block;
-  transform: translateY(115px); /* posición inicial abajo */
-  opacity: 0;
-}
-.apartado:hover::after{
+
+.apartado:hover::after {
   background-color: rgba(0, 0, 0, 0.188);
 }
-.apartado:hover{
-  transition: 5s;
-}
+
+/* ------------------- FOOTER ------------------ */
 
 
-/* ------------------Pie de Pagina----------------------------------------- */
-#foda{
-  width: 100%;
-}
-footer{
-  justify-items: center;
-  
-}
-.btns{
-  margin-top: 1rem;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
-}
-.btn_foda{
-  color: white;
-  width: 15vw;
-  background-color: var(--Color_Cafe);
-  font-size: 2rem;
-  padding-bottom: 1rem;
-  padding-inline: 1rem;
-  border-radius: .5rem;
-  transition: 1s;
-}
-.btn_foda.activo {
-  background-color: var(--Color_Cafe_Claro);
-  pointer-events: none;
-}
-.contenedor_pestañas {
-  top: -1rem;
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  background-color: var(--Color_Cafe_Claro);
-  display: none; /* lo muestras con JS */
-}
-
-.pestaña_conten {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100vw;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  background-color: var(--Color_Cafe_Claro);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: none; /* para que no interfiera cuando está oculta */
-}
-
-.pestaña_conten.activa {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
 
 
-.titulos{
-  padding-top: 2rem;
-  text-align: center;
-  font-family: var(--Subtitulos);
-  font-size: 6rem;
-  color: white;
-}
-.texto{
-  padding-top: 2rem;
-  font-family: var(--Texto_Base);
-  font-size: 3vh;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  color: white;
-  width: 60vw;
 
-}
-#informacion{
-  color: white;
-  position: relative;
-  top: -1rem;
-  text-align: center;
-  width: 100vw;
-  background-color: var(--Color_Cafe);
-  transition: background-color 0s ease, color 0s ease;
-  
-  
-}
-.btn_foda:hover{
-  cursor: pointer;
-  background-color: var(--Color_Cafe_Oscuro);
-  color: white;
-  transition: 0s;
-}
-.btn_foda.activo:hover {
-  background-color:var(--Color_Cafe_Claro); /* el color que quieras al pasar el mouse */
-}
-.copi {
-  
 
-  text-align: center;
-  
-}
-ul {
-  display: flex;
-  flex-direction: column;
-  list-style: circle;
-  align-items: flex-start; /* En lugar de justify-items */
-  padding-left: 10rem;
-  font-size: 1rem;
-  line-height: 2;
-}
+/* ------------------ RESPONSIVE ------------------ */
 
-.listas {
-  display: flex;
-  flex-direction: row;
-  
-  justify-content: center;
-}
-/* ---------------Ajustes de pantalla-------------- */
-@media (max-width: 1100px) {
-  .apartados{
-    flex-direction: column;
-  }
-  .apartado{
-    width: 100vw;
-  }
-  #temp{
-    font-size: 2rem;
-  }
-  #grande{
-    
-    font-size: 20vw;
-  }
-  #subtitulo{
-    font-size: 3vw;
-  }
-  .texto{
+
+@media (max-width: 1124px) {
+  .btn_compra{
     font-size: 5vw;
   }
+  .btn_compra:hover{
+    font-size: 5.5vw;
+  }
+  .logo_eslogan{
+    padding: top 50vh;
+  }
+  .apartados {
+    flex-direction: column;
+  }
+
+  .apartado {
+    width: 100vw;
+    font-size: 10vh;
+  }
+
+  .logo_titulo {
+    font-size: 20vw;
+  }
+
+  .texto {
+    font-size: 5vw;
+  }
+
+  .btn_foda {
+    width: auto;
+    font-size: 5vw;
+
+  }
+  .listas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ul {
+    padding-left: 0;
+    align-items: center;
+  }
+ .contenedor_pestañas{
+  height: 100vh;
+ }
 }
+

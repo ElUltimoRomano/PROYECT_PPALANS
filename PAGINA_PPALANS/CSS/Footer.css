@@ -1,0 +1,23 @@
+.texto {
+  font-family: var(--Texto_Base);
+  font-size: 3vh;
+  color: white;
+  width: 60vw;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#informacion {
+  background-color: var(--Color_Cafe);
+  color: white;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0s, color 0s;
+  padding: 2rem 0;
+}
+
+.listas {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}

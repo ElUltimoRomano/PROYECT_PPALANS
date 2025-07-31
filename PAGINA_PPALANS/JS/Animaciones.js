@@ -1,20 +1,22 @@
-const logo_grande = document.getElementById('grande');
-const Eslogan_char = new SplitType('#subtitulo', { types: 'chars' });
-const botones = document.querySelectorAll('.btn_foda');
-const informacion = document.getElementById('informacion')
-const elementos = document.querySelectorAll('.pestaña_conten');
 const barra = document.querySelector('.navegacion');
-const sentinela = document.getElementById('sentinela');
-const logo_chico = document.getElementById('temp');
+const titulos = document.querySelector('.logo_eslogan');
+const logoGrande = document.getElementById('grande');
+const logoChico = document.getElementById('temp');
+//const esloganChar = new SplitType('#subtitulo', { types: 'chars' });
 const subtitulo = document.querySelector('#subtitulo');
+const botones = document.querySelectorAll('.btn_foda');
+const informacion = document.getElementById('informacion');
+const elementos = document.querySelectorAll('.pestaña_conten');
+const sentinela = document.getElementById('sentinela');
 const apartados = document.querySelectorAll('.apartado');
-const contenedor_pestañas = document.querySelector('.contenedor_pestañas');
-const pestañas_conten = document.querySelector('.pestañas_conten');
+const contenedorPestañas = document.querySelector('.contenedor_pestañas');
+const pestañasConten = document.querySelector('.pestañas_conten');
+const logo = document.querySelector('.logo_pqueño');
+const LOGO = document.querySelector('.titulos');
 
-// -------------------Amimacion de las pestañas  del footer-------------
+let pestañaActiva = true;
 
-
-
+// Animación hover en apartados
 apartados.forEach(apartado => {
   apartado.addEventListener('mouseenter', () => {
     apartado.style.transition = 'transform 0.3s ease';
@@ -26,148 +28,181 @@ apartados.forEach(apartado => {
   });
 });
 
-
-let pestaña_activa=true;
+// Hover en botones cambia color de 'informacion'
 botones.forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-        if(pestaña_activa){
-        informacion.style.transition = 'background-color 0s, color 0s';
-        informacion.style.backgroundColor = 'var(--Color_Cafe_Oscuro)';
-        }
-    });
-    btn.addEventListener('mouseleave', () => {
-        informacion.style.transition = 'background-color 0s, color 0s';
-        informacion.style.backgroundColor = 'var(--Color_Cafe)';
-    });
+  btn.addEventListener('mouseenter', () => {
+    if (pestañaActiva) {
+      informacion.style.transition = 'background-color 0s, color 0s';
+    }
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    informacion.style.transition = 'background-color 0s, color 0s';
+  });
 });
+
+// Click en botones muestra pestaña activa
+
 botones.forEach(btn => {
   btn.addEventListener('click', () => {
-    console.log('Se activo la animacion de pestañas');
-    pestaña_activa = false;
-    document.querySelector('.contenedor_pestañas').style.display = 'block';
+    console.log('Se activó la animación de pestañas');
+    pestañaActiva = false;
+    contenedorPestañas.style.display = 'block';
 
-    // Cambiar color del botón activo
     botones.forEach(b => b.classList.remove('activo'));
     btn.classList.add('activo');
 
-    // Mostrar pestaña correspondiente
     elementos.forEach(el => {
       el.classList.remove('activa');
       el.style.position = 'absolute';
     });
 
-    const index = parseInt(btn.dataset.num);
+    const index = parseInt(btn.dataset.num, 10);
     if (index >= 0 && index < elementos.length) {
       elementos[index].classList.add('activa');
-
     } else {
       console.warn('No existe un elemento para el botón:', btn.textContent);
-      pestaña_activa = true;
+      pestañaActiva = true;
     }
   });
 });
 
-
-// --------------------Animacion del logotipo----------------------------
-
-const Mostrar_Eslogan = () => {
-  subtitulo.style.opacity = 1;
-  gsap.set('.char', { y: 115, opacity: 0 });
-  gsap.to('.char', {
-    y: 0,
-    opacity: 1,
-    stagger: 0.07,
-    delay: 0.2,
-    duration: 0.5,
-    ease: "power2.out",
-  });
-};
-
-const Ocultar_Eslogan = () => {
-  gsap.to('.char', {
-    y: -100,
-    opacity: 0,
-    duration: 0.6,
-    ease: "linear",
-  });
-  
-};
-const Mostrar_logo = () => {
-  subtitulo.style.opacity = 0;
-  anime({
-    targets: logo_grande,
+// Set inicial barra oculta
+barra.style.opacity = 0;
+// Timeline de entrada (mostrar elementos)
+const Animacion_Bajar= anime.timeline({
+  autoplay: false,
+  easing: 'easeOutExpo',
+  duration: 1000,
+});
+Animacion_Bajar
+  .add({
+    targets: '.logo_titulo',
+    opacity: [1, 0],
+    translateY: [0, -200],
+    duration: 2500,
+  })
+  .add({
+    targets: '.logo_eslogan_texto',
+    opacity: [0, 1],
+    translateY: [0, 35],
+    duration: 1800,
+  }, 0)
+    .add({
+    targets: '.navegacion',
     translateY: [-100, 0],
     opacity: [0, 1],
-    duration: 2000,
-    easing: 'easeInOutCubic',
-    complete: () => {
+    duration: 1500,
+  },300)
+  .add({
+    targets: '.logo_pequeno',
+    opacity: [0, 1],
+    translateX: [-100, 0],
+    duration: 800,
+  },'1000')
+   .add({
+    targets: '.btn_compra',
+    opacity: [1, 0],
+    duration: 800,
+    scale: [1, 0.9],
+  },0)
+  ;
 
-      Mostrar_Eslogan();
-    }
-      
-  });
-};
-const Ocultar_logo = () => {
-  logo_grande.style.animation = 'none';
-  logo_grande.offsetHeight;
-  anime({
-      targets:logo_grande,
-      translateY: '-100%',
-      opacity: '0',
-      duration: 600,
-      easing: 'linear',
+
+
+// Timeline de salida (ocultar elementos)}
+const Animacion_entrada = anime.timeline({
+  autoplay: false,
+  easing: 'easeOutExpo',
+});
+Animacion_entrada
+  .add({
+    targets: '.logo_titulo',
+    opacity: [0, 1],
+    translateY: [-100,0],
+    duration: 2500,
+  }, 0)
+  .add({
+    targets: '.logo_eslogan_texto',
+    opacity: [0, 1],
+    translateY: [30,0],
+    duration: 1800,
+  },1000)
+  .add({
+    targets: '.btn_compra',
+    opacity: [0, 1],
+    scale: [0.9 , 1],
+    duration: 1500,
+    easing: 'linear',
+  },2000)
+  ;
+const Animacion_Subir = anime.timeline({
+  autoplay: false,
+  easing: 'easeOutExpo',
+});
+Animacion_Subir
+  .add({
+    targets: '.navegacion',
+    translateY: [0, -100],
+    duration: 2500,
   })
-  Ocultar_Eslogan();
-};
+  .add({
+    targets: '.logo_titulo',
+    opacity: [0, 1],
+    translateY: [-100,0],
+    duration: 2500,
+  }, 0)
+  .add({
+    targets: '.logo_eslogan_texto',
+    opacity: [0, 1],
+    translateY: [30,0],
+    duration: 1800,
+  },1000)
+  .add({
+    targets: '.logo_pequeno',
+    opacity: [1, 0],
+    translateX: [0,-100],
+  }, 0)
+  .add({
+    targets: '.btn_compra',
+    opacity: [0, 1],
+    scale: [0.9 , 1],
+    duration: 1000,
+  },1500)
+  ;
 
-const ocultarBarra = () => {
-  logo_chico.offsetHeight;
-  anime({
-    targets: barra,
-    translateY: '-100%',
-    opacity: 0,
-    duration: 500,
-    easing: 'easeInOutQuad',
-  });
-};
-
-const mostrarBarra = () => {
-  logo_chico.style.opacity = '0';
-  logo_chico.offsetHeight;
-  anime({
-    targets: barra,
-    translateY: '0%',
-    opacity: 1,
-    duration: 500,
-    easing: 'easeInOutQuad',
-      complete: () => {
-          anime({
-            targets: logo_chico,
-            translateX: ['-100%', '0%'],
-            opacity: [0, 1],
-            duration: 2000,
-            easing: 'easeOutExpo',
-           });
+let scrollTimeout = null;
+let visible = false; // barra visible o no
+window.addEventListener('scroll', () => {
+  if (scrollTimeout) clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+      const rect = sentinela.getBoundingClientRect();
+      // Considera que si el sentinela está fuera de pantalla (arriba), barra debe mostrarse
+      const shouldShowBar = rect.top < 0;
+      if (shouldShowBar && !visible) {
+        visible = true;
+        Animacion_Subir.pause();
+        Animacion_Bajar.restart();
+      } else if (!shouldShowBar && visible) {
+        visible = false;
+        Animacion_Bajar.pause();
+        Animacion_Subir.restart();
       }
+  }, 100);
+});
+document.addEventListener('DOMContentLoaded', () => {
+  pestañaActiva = false;
+  contenedorPestañas.style.display = 'block';
+
+  botones.forEach(b => b.classList.remove('activo'));
+  botones[0].classList.add('activo');
+
+  elementos.forEach(el => {
+    el.classList.remove('activa');
+    el.style.position = 'absolute';
   });
-  
-};
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      ocultarBarra();
-      Mostrar_logo();
-
-    } else {
-      logo_chico.style.opacity = '0';
-      mostrarBarra();
-      Ocultar_logo();
-    }
-  });
-}, { threshold: 1.0 });
-
-observer.observe(sentinela);
-Mostrar_logo();
-// -----------------------------------------------
+  elementos[0].classList.add('activa');
+});
+Animacion_entrada.play();
 
