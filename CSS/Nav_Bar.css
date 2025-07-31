@@ -1,0 +1,37 @@
+.navegacion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+}
+
+.logo_pequeno {
+  font-family: var(--Titulos);
+  font-size: 1.5rem;
+
+}
+
+.opciones_nav {
+  margin-left: auto;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav_bar {
+  padding: .2rem;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
+  text-decoration: underline;
+  transition: 0.7s;
+  border-color: none;
+}
+
+.nav_bar:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

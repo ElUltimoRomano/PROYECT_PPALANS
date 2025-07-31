@@ -1,0 +1,238 @@
+
+@import url('Nav_Bar.css');
+@import url('Footer.css');
+@import url('Foda.css');
+:root {
+  --Color_Cafe_Claro: #9a827b;
+  --Color_Cafe: #91766e;
+  --Color_Cafe_Oscuro: #523f39;
+  --Texto_Base: 'Montserrat', sans-serif;
+  --Titulos: 'Cormorant Garamond', serif;
+  --Subtitulos: 'Bebas Neue', sans-serif;
+}
+*{
+  overflow-x:hidden;
+}
+button,a{
+  all:unset;
+}
+body {
+  margin: 0;
+  font-family: var(--Texto_Base);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  
+}
+ul {
+  list-style: circle;
+  padding: 0;
+}
+
+ul li {
+  margin: 0.5rem 0;
+  text-align: left;
+}
+
+.copi {
+  margin-top: 2rem;
+}
+#subtitulo {
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
+}
+.wrapper {
+  width: 100%;
+}
+
+
+/* ----------------- ENCABEZADO ------------------- */
+
+.encabezado {
+  width: 100%;
+  background-image: url(IMG/Fondo.avif);
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+/* ------------------ LOGO + ESLOGAN ------------------ */
+
+#logo_eslogan {
+  text-align: center;
+  padding: 34vh 1rem 2rem;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.logo_titulo {
+  line-height: 15vh;
+  font-family: var(--Titulos);
+  font-size: 15vh;
+  margin: 0;
+  color: white;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.linea_invicible{
+  height: 2.5vh;
+  overflow: hidden;
+}
+
+.logo_eslogan_texto {
+  font-family: var(--Subtitulos);
+  font-size: 3vh;
+  line-height: 3vh;
+  margin: 0;
+  word-spacing: 1vw;
+  color: white;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.conteiner_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0rem 50rem;
+
+}
+
+.btn_compra {
+  font-family: var(--Titulos);
+  font-size: 2vw;
+  font-weight: bold;
+  padding: 2vh;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  transition: 0.5s;
+  border-radius: 1rem;
+  opacity: 0;
+}
+
+
+.btn_compra:hover {
+  background-color: white;
+  color: black;
+  padding: 2.2vh;
+  font-size: 2.5vw;
+  cursor: pointer;
+}
+
+/* ------------------ APARTADOS ------------------ */
+
+.apartados {
+  display: flex;
+  width: 100vw;
+  transition: background-size 1s ease;
+  overflow:hidden;
+}
+
+.apartado {
+  width: 50vw;
+  height: 100vh;
+  font-family: var(--Subtitulos);
+  font-size: 10rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  transition: background-size 1s ease-in-out;
+}
+
+#dama {
+  background-image: url(IMG/Dama.jpg);
+}
+
+#caballero {
+  background-image: url(IMG/Caballero.jpg);
+}
+
+.apartado::after {
+  content: attr(id);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.5s ease-in-out;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.apartado:hover::after {
+  background-color: rgba(0, 0, 0, 0.188);
+}
+
+/* ------------------- FOOTER ------------------ */
+
+
+
+
+
+
+/* ------------------ RESPONSIVE ------------------ */
+
+
+@media (max-width: 1124px) {
+  .btn_compra{
+    font-size: 5vw;
+  }
+  .btn_compra:hover{
+    font-size: 5.5vw;
+  }
+  .logo_eslogan{
+    padding: top 50vh;
+  }
+  .apartados {
+    flex-direction: column;
+  }
+
+  .apartado {
+    width: 100vw;
+    font-size: 10vh;
+  }
+
+  .logo_titulo {
+    font-size: 20vw;
+  }
+
+  .texto {
+    font-size: 5vw;
+  }
+
+  .btn_foda {
+    width: auto;
+    font-size: 5vw;
+
+  }
+  .listas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ul {
+    padding-left: 0;
+    align-items: center;
+  }
+ .contenedor_pestañas{
+  height: 100vh;
+ }
+}
+
